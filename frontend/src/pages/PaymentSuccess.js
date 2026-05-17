@@ -1,0 +1,143 @@
+import React, { useEffect, useState } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
+import API from "../services/api";
+import { CheckCircle, X } from 'lucide-react';
+
+const PaymentSuccess = () => {
+  const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  const [status, setStatus] = useState("processing"); // processing | success | failed
+  const [message, setMessage] = useState("Payment successful - Now confirming your registration...");
+  const [eventId, setEventId] = useState(null);
+
+  useEffect(() => {
+    const confirmAfterPayment = async () => {
+      try {
+        const user = JSON.parse(localStorage.getItem("user"));
+        if (!user) {
+          navigate("/login");
+          return;
+        }
+
+        const orderId = searchParams.get("order_id");
+
+        if (!orderId) {
+          setStatus("failed");
+          setMessage("Order ID missing");
+          return;
+        }
+
+        // orderId format: order_<eventId>_<userId>_<timestamp>
+        const parts = orderId.split("_");
+        const extractedEventId = parts?.[1];
+
+        if (!extractedEventId) {
+          setStatus("failed");
+          setMessage("Invalid order id format");
+          return;
+        }
+
+        // ✅ store for UI buttons
+        setEventId(extractedEventId);
+
+        // ✅ IMPORTANT FIX: use extractedEventId directly (not state)
+        await API.post(`/events/${extractedEventId}/register`, {
+          paid: true,
+          paymentMethod: "CASHFREE",
+          orderId: orderId,
+        });
+
+        setStatus("success");
+        setMessage("Registration Confirmed 🎉 Redirecting...");
+
+        setTimeout(() => {
+          navigate(`/events/${extractedEventId}`);
+        }, 1500);
+      } catch (err) {
+        console.log("PaymentSuccess Error:", err);
+
+        const msg = err.response?.data?.message || "Registration failed ❌";
+
+        // ✅ if already registered then still success
+        if (msg.toLowerCase().includes("already")) {
+          setStatus("success");
+          setMessage("Already Registered ✅ Redirecting...");
+          setTimeout(() => {
+            navigate(`/events/${eventId || "/events"}`);
+          }, 1200);
+          return;
+        }
+
+        setStatus("failed");
+        setMessage(msg);
+      }
+    };
+
+    confirmAfterPayment();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <div className="neu-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
+      <div className="neu-card" style={{ maxWidth: '520px', width: '100%', textAlign: 'center' }}>
+        <h2 style={{ marginBottom: "8px" }}>Payment Status</h2>
+
+        <p style={{ fontSize: "1.05rem", color: "var(--neu-text-secondary)", marginBottom: "18px" }}>
+          {message}
+        </p>
+
+        {status === "processing" && (
+          <div
+            className="neu-badge warning"
+            style={{ marginBottom: "18px", fontSize: '1rem', padding: '10px 20px' }}
+          >
+            Processing...
+          </div>
+        )}
+
+        {status === "success" && (
+          <div
+            className="neu-badge success"
+            style={{ marginBottom: "18px", fontSize: '1rem', padding: '10px 20px', gap: '0.5rem' }}
+          >
+            <CheckCircle size={16} /> Paid &amp; Registered
+          </div>
+        )}
+
+        {status === "failed" && (
+          <div
+            className="neu-badge danger"
+            style={{ marginBottom: "18px", fontSize: '1rem', padding: '10px 20px', gap: '0.5rem' }}
+          >
+            <X size={16} /> Failed
+          </div>
+        )}
+
+        <div style={{ display: "flex", gap: "1rem", justifyContent: "center", marginTop: '1rem' }}>
+          <button
+            onClick={() => navigate("/events")}
+            className="neu-button primary"
+          >
+            Go to Events
+          </button>
+
+          {eventId && (
+            <button
+              onClick={() => navigate(`/events/${eventId}`)}
+              className="neu-button"
+            >
+              Open Event
+            </button>
+          )}
+        </div>
+
+        <p style={{ marginTop: "18px", fontSize: "0.9rem", color: "var(--neu-text-secondary)" }}>
+          After registration, you can download your ticket from the Event page
+        </p>
+      </div>
+    </div>
+  );
+};
+
+export default PaymentSuccess;

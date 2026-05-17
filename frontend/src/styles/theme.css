@@ -1,0 +1,70 @@
+:root[data-theme="dark"] {
+  /* Softer Dark Theme Variables */
+  --bg-main: #0f1115;           /* Softer background */
+  --bg-card: #171923;           /* Softer card surface */
+  --bg-surface: #171923;        /* Consistent surface */
+  --text-main: #ffffff;         /* Pure white text */
+  --text-secondary: #9aa3b2;    /* Softer secondary text */
+  --text-muted: #6b7280;        /* Softer muted text */
+  --border-soft: rgba(255, 255, 255, 0.08);
+  --accent-primary: #6c7cff;
+  
+  /* Softer Shadows */
+  --shadow-soft: 6px 6px 12px rgba(0, 0, 0, 0.3), -6px -6px 12px rgba(20, 25, 35, 0.3);
+  --shadow-inset: inset 4px 4px 8px rgba(0, 0, 0, 0.25), inset -4px -4px 8px rgba(30, 35, 50, 0.15);
+}
+
+:root[data-theme="light"] {
+  /* Requested Light Theme Variables (Apple/Neumorphic) */
+  /* Softer, easier-on-eyes background */
+  --bg-main: #f5f7fa;
+  --bg-card: #f5f7fa;
+  --bg-surface: #f5f7fa;
+  
+  /* Improved text readability */
+  --text-main: #1a202c;
+  --text-secondary: #4b5563;
+  --text-muted: #7a8290;
+  
+  /* Better border definition for light mode */
+  --border-soft: rgba(0, 0, 0, 0.08);
+  --accent-primary: #4f46e5;
+
+  /* Enhanced Neumorphic Shadows - softer and more refined */
+  --shadow-soft: 6px 6px 12px rgba(0, 0, 0, 0.08), -6px -6px 12px rgba(255, 255, 255, 0.85);
+  --shadow-inset: inset 4px 4px 8px rgba(0, 0, 0, 0.06), inset -4px -4px 8px rgba(255, 255, 255, 0.9);
+}
+
+/* Global Reset & Base Styles */
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Map new variables to existing system (neumorphic.css compatibility) */
+:root {
+  --neu-bg: var(--bg-main);
+  --neu-surface: var(--bg-card);
+  --neu-card-bg: var(--bg-card);
+  --neu-text-primary: var(--text-main);
+  --neu-text-secondary: var(--text-secondary);
+  --neu-shadow-outer: var(--shadow-soft);
+  --neu-shadow-inner: var(--shadow-inset);
+  --neu-blue: var(--accent-primary);
+  --neu-border: var(--border-soft);
+}
+
+/* Component Overrides for Theme Consistency */
+.neu-card {
+  background: var(--bg-card);
+  border: none;
+  border-radius: 16px;
+}
+
+.neu-sidebar {
+  background: var(--bg-card);
+  border-right: none;
+}

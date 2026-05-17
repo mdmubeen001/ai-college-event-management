@@ -1,0 +1,230 @@
+/* Global Production-Ready UI Polish */
+
+/* ========================================
+   GLOBAL TRANSITIONS & ANIMATIONS
+   ======================================== */
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Disable transitions for visibility and motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Disable unnecessary transitions */
+.no-transition,
+.no-transition * {
+  transition: none !important;
+}
+
+/* ========================================
+   SPACING & LAYOUT GRID (8px base)
+   ======================================== */
+
+:root {
+  /* 8px grid spacing system */
+  --spacing-1: 4px;
+  --spacing-2: 8px;
+  --spacing-3: 12px;
+  --spacing-4: 16px;
+  --spacing-5: 20px;
+  --spacing-6: 24px;
+  --spacing-7: 28px;
+  --spacing-8: 32px;
+  --spacing-10: 40px;
+  --spacing-12: 48px;
+  --spacing-16: 64px;
+  --spacing-20: 80px;
+}
+
+/* ========================================
+   CONSISTENT BORDER RADIUS (16px primary)
+   ======================================== */
+
+:root {
+  --radius-none: 0;
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+}
+
+/* ========================================
+   HOVER ANIMATIONS - SUBTLE LIFT
+   ======================================== */
+
+button:not(:disabled),
+a,
+.interactive,
+[role="button"] {
+  cursor: pointer;
+}
+
+button:not(:disabled):hover,
+a:hover,
+.interactive:hover {
+  transform: translateY(-2px);
+}
+
+button:not(:disabled):active,
+a:active,
+.interactive:active {
+  transform: translateY(0);
+}
+
+/* Card hover animations */
+.card, .minimal-card, .event-card, [role="article"] {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1),
+              background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover, .minimal-card:hover, .event-card:hover, [role="article"]:hover {
+  transform: translateY(-4px);
+}
+
+/* ========================================
+   TYPOGRAPHY
+   ======================================== */
+
+body, html {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6, strong, b, .font-bold {
+  font-weight: 700;
+}
+
+.font-semibold, .semibold {
+  font-weight: 600;
+}
+
+.font-medium, .medium {
+  font-weight: 500;
+}
+
+.font-normal {
+  font-weight: 400;
+}
+
+.font-light {
+  font-weight: 300;
+}
+
+/* ========================================
+   SCROLLBAR STYLING
+   ======================================== */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg-secondary, #111827);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-soft, rgba(255, 255, 255, 0.1));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-border-hover, rgba(255, 255, 255, 0.15));
+}
+
+/* ========================================
+   SELECTION & FOCUS STYLES
+   ======================================== */
+
+::selection {
+  background-color: var(--color-accent-light, rgba(99, 102, 241, 0.15));
+  color: var(--color-accent, #6366f1);
+}
+
+::-moz-selection {
+  background-color: var(--color-accent-light, rgba(99, 102, 241, 0.15));
+  color: var(--color-accent, #6366f1);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--color-accent, #6366f1);
+  outline-offset: 2px;
+}
+
+/* ========================================
+   LINK STYLING
+   ======================================== */
+
+a {
+  color: var(--color-accent, #6366f1);
+  text-decoration: none;
+  transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+a:hover {
+  color: var(--color-accent-hover, #818cf8);
+}
+
+a:active {
+  color: var(--color-accent-dark, #4f46e5);
+}
+
+/* ========================================
+   FORM ELEMENTS
+   ======================================== */
+
+input, textarea, select {
+  font-size: 14px;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+/* ========================================
+   IMAGE OPTIMIZATION
+   ======================================== */
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ========================================
+   BUTTON RESET & BASE STYLES
+   ======================================== */
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  font-size: 14px;
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}

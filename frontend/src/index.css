@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Exo:wght@300;400;500;600;700&display=swap');
+
+* {
+  font-family: "Exo", sans-serif !important;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: "Exo", sans-serif !important;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-bg, #0b0f1a);
+  color: var(--color-text-primary, #e5e7eb);
+}
+
+code {
+  font-family: 'Fira Code', 'Monaco', 'Courier New', monospace;
+  font-size: 0.85em;
+}
+
+/* Typography Scale */
+h1 { font-family: "Audiowide", cursive !important; font-size: 36px; font-weight: 700; letter-spacing: 1px; }
+h2 { font-size: 28px; font-weight: 600; }
+h3 { font-size: 20px; font-weight: 500; }
+p  { font-size: 15px; font-weight: 400; opacity: 0.9; }
+small { font-size: 12px; opacity: 0.7; }
+
+/* Ensure all text elements use Exo font */
+h2, h3, h4, h5, h6, p, span, div, button, input, textarea, select {
+  font-family: "Exo", sans-serif !important;
+}
