@@ -18,7 +18,7 @@ const StudentDashboard = () => {
   const resolveEventImage = (event) => {
     const src = event?.image;
     if (!src) return null;
-    return src.startsWith("http") ? src : `http://localhost:5000${src}`;
+    return src.startsWith("http") ? src : `https://ai-college-backend-ja0y.onrender.com${src}`;
   };
 
   useEffect(() => {

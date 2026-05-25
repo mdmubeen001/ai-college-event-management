@@ -40,7 +40,7 @@ const EditEvent = () => {
         if (data.image) {
           const fullImageUrl = data.image.startsWith("http")
             ? data.image
-            : `http://localhost:5000${data.image}`;
+            : `https://ai-college-backend-ja0y.onrender.com${data.image}`;
           setPreview(fullImageUrl);
           setImageUrl(data.image);
         }

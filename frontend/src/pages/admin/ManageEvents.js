@@ -16,7 +16,7 @@ const ManageEvents = () => {
 
   const resolveEventImage = (src) => {
     if (!src) return null;
-    return src.startsWith("http") ? src : `http://localhost:5000${src}`;
+    return src.startsWith("http") ? src : `https://ai-college-backend-ja0y.onrender.com${src}`;
   };
 
   const getEventImageSrc = (src) => resolveEventImage(src) || EVENT_PLACEHOLDER;

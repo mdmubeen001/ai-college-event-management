@@ -141,7 +141,7 @@ const Events = () => {
                           src={
                             event.image?.startsWith("http")
                               ? event.image
-                              : `http://localhost:5000${event.image}`
+                              : `https://ai-college-backend-ja0y.onrender.com${event.image}`
                           }
                           alt={event.title}
                           style={{ width: '100%', height: '100%', objectFit: 'cover' }}

@@ -60,7 +60,7 @@ const LandingPage = () => {
               <Link to="/events" className="neu-button primary" style={{ fontSize: '1.1rem', padding: '16px 32px' }}>
                 Explore Events
               </Link>
-              <Link to="/student/dashboard" className="neu-button" style={{ fontSize: '1.1rem', padding: '16px 32px' }}>
+              <Link to="/register" className="neu-button" style={{ fontSize: '1.1rem', padding: '16px 32px' }}>
                 Go to Dashboard
               </Link>
             </div>

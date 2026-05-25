@@ -248,7 +248,7 @@ const EventDetails = () => {
                   src={
                     event.image.startsWith("http")
                       ? event.image
-                      : `http://localhost:5000${event.image}`
+                      : `https://ai-college-backend-ja0y.onrender.com${event.image}`
                   }
                   alt={event.title}
                   style={{ borderRadius: "var(--neu-radius-sm)", width: '100%', maxHeight: '400px', objectFit: 'cover' }}
@@ -438,7 +438,7 @@ const EventDetails = () => {
                         src={
                           relEvent.image.startsWith("http")
                             ? relEvent.image
-                            : `http://localhost:5000${relEvent.image}`
+                            : `https://ai-college-backend-ja0y.onrender.com${relEvent.image}`
                         }
                         alt={relEvent.title}
                         style={{ borderRadius: "var(--neu-radius-sm)", width: '100%', height: '150px', objectFit: 'cover' }}
