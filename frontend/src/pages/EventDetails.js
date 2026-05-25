@@ -226,7 +226,7 @@ const EventDetails = () => {
           {/* Header with back and share */}
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: "1.5rem" }}>
             <button
-              onClick={() => navigate(-1)}
+              onClick={() => navigate("/events")}
               className="neu-button small"
             >
               ← Back

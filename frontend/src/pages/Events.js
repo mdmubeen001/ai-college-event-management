@@ -58,7 +58,7 @@ const Events = () => {
       
       <div className="neu-container">
           <button
-            onClick={() => navigate(-1)}
+            onClick={() => navigate("/student/dashboard")}
             className="neu-button small"
             style={{ marginBottom: "2rem" }}
           >
