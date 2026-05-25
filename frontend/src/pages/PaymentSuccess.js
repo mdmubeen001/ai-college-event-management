@@ -60,14 +60,14 @@ const PaymentSuccess = () => {
         const msg = err.response?.data?.message || "Registration failed ❌";
 
         // ✅ if already registered then still success
-        if (msg.toLowerCase().includes("already")) {
-          setStatus("success");
-          setMessage("Already Registered ✅ Redirecting...");
-          setTimeout(() => {
-            navigate(`/events/${eventId || "/events"}`);
-          }, 1200);
-          return;
-        }
+       if (msg.toLowerCase().includes("already")) {
+         setStatus("success");
+         setMessage("Already Registered ✅ Redirecting...");
+         setTimeout(() => {
+           navigate(`/events/${extractedEventId}`);
+         }, 1200);
+         return;
+      }
 
         setStatus("failed");
         setMessage(msg);
