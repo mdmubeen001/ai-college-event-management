@@ -34,6 +34,10 @@ exports.createCashfreeOrder = async (req, res) => {
       },
     };
 
+    console.log("CLIENT ID:", process.env.CASHFREE_CLIENT_ID);
+    console.log("ENV:", process.env.CASHFREE_ENV);
+    console.log("BASE URL:", CASHFREE_BASE_URL);
+
     const response = await axios.post(`${CASHFREE_BASE_URL}/pg/orders`, payload, {
       headers: {
         "x-client-id": process.env.CASHFREE_CLIENT_ID,
@@ -48,7 +52,12 @@ exports.createCashfreeOrder = async (req, res) => {
       order: response.data, // ✅ payment_session_id comes here
     });
   } catch (err) {
-    return res.status(500).json({ success: false, message: err.message });
+    console.log("CASHFREE ERROR:", err.response?.data || err.message);
+
+     return res.status(500).json({
+     success: false,
+     message: err.response?.data || err.message,
+    });
   }
 };
 
