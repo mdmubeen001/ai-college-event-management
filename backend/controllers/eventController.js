@@ -81,16 +81,20 @@ const updateEvent = async (req, res) => {
     }
 
     let imagePath = event.image;
+
     if (req.file) {
-      imagePath = `/uploads/${req.file.filename}`;
-    } else if (req.body.image || req.body.image === "") {
-      imagePath = req.body.image;
+    imagePath = `/uploads/${req.file.filename}`;
+    } else if (req.body.image && req.body.image.trim() !== "") {
+    imagePath = req.body.image;
     }
 
     event.title = req.body.title;
     event.description = req.body.description;
     event.category = req.body.category;
-    if (Object.prototype.hasOwnProperty.call(req.body, "tags"))    event.date = req.body.date;
+    if (Object.prototype.hasOwnProperty.call(req.body, "tags")) {
+      event.tags = parseTags(req.body.tags);
+    }
+    event.date = req.body.date;
     event.location = req.body.location;
     event.isFree = req.body.isFree === 'true';
     event.price = req.body.isFree === 'true' ? 0 : req.body.price;
