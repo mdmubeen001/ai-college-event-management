@@ -72,6 +72,7 @@ npm start
 cd backend
 npm install
 npm start
+or npx nodemon server.js
 ```
 
 ---
