@@ -90,8 +90,7 @@ const updateEvent = async (req, res) => {
     event.title = req.body.title;
     event.description = req.body.description;
     event.category = req.body.category;
-    if (req.body.hasOwnProperty("tags")) event.tags = parseTags(req.body.tags);
-    event.date = req.body.date;
+    if (Object.prototype.hasOwnProperty.call(req.body, "tags"))    event.date = req.body.date;
     event.location = req.body.location;
     event.isFree = req.body.isFree === 'true';
     event.price = req.body.isFree === 'true' ? 0 : req.body.price;
