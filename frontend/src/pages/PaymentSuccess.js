@@ -39,10 +39,8 @@ const PaymentSuccess = () => {
           return;
         }
 
-        // Store for UI buttons
         setEventId(extractedEventId);
 
-        // Register after successful payment
         await API.post(`/events/${extractedEventId}/register`, {
           paid: true,
           paymentMethod: "CASHFREE",
@@ -52,9 +50,9 @@ const PaymentSuccess = () => {
         setStatus("success");
         setMessage("Registration Confirmed 🎉 Redirecting...");
 
-        // Auto redirect to Event Details
+        // ✅ replace:true added
         setTimeout(() => {
-          navigate(`/events/${extractedEventId}`);
+          navigate(`/events/${extractedEventId}`, { replace: true });
         }, 1500);
       } catch (err) {
         console.log("PaymentSuccess Error:", err);
@@ -62,13 +60,13 @@ const PaymentSuccess = () => {
         const msg =
           err.response?.data?.message || "Registration failed ❌";
 
-        // Already registered case
         if (msg.toLowerCase().includes("already")) {
           setStatus("success");
           setMessage("Already Registered ✅ Redirecting...");
 
+          // ✅ replace:true added
           setTimeout(() => {
-            navigate(`/events/${extractedEventId}`);
+            navigate(`/events/${extractedEventId}`, { replace: true });
           }, 1200);
           return;
         }
