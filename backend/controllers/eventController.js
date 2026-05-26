@@ -16,9 +16,8 @@ const parseTags = (tags) => {
 const createEvent = async (req, res) => {
   try {
     const image = req.file
-      ? `/uploads/${req.file.filename}`
+      ? req.file.path
       : req.body.image;
-
     const tags = parseTags(req.body.tags);
 
     const event = await Event.create({
@@ -83,9 +82,9 @@ const updateEvent = async (req, res) => {
     let imagePath = event.image;
 
     if (req.file) {
-    imagePath = `/uploads/${req.file.filename}`;
+     imagePath = req.file.path;
     } else if (req.body.image && req.body.image.trim() !== "") {
-    imagePath = req.body.image;
+     imagePath = req.body.image;
     }
 
     event.title = req.body.title;

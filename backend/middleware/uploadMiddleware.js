@@ -1,25 +1,13 @@
 const multer = require("multer");
-const path = require("path");
-const fs = require("fs");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
+const cloudinary = require("../config/cloudinary");
 
-const uploadDir = path.join(__dirname, "../uploads");
-
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
-}
-
-// Storage config
-const storage = multer.diskStorage({
-  destination(req, file, cb) {
-    cb(null, uploadDir);
-  },
-  filename(req, file, cb) {
-    cb(
-      null,
-      `${Date.now()}-${Math.round(Math.random() * 1e9)}${path.extname(
-        file.originalname
-      )}`
-    );
+// Cloudinary storage config
+const storage = new CloudinaryStorage({
+  cloudinary: cloudinary,
+  params: {
+    folder: "college-events",
+    allowed_formats: ["jpg", "jpeg", "png", "webp"],
   },
 });
 
@@ -28,7 +16,7 @@ const fileFilter = (req, file, cb) => {
   if (file.mimetype.startsWith("image")) {
     cb(null, true);
   } else {
-    cb(new Error("Only image files are allowed!"), false);
+    cb(new Error("Only image files are allowed"), false);
   }
 };
 
