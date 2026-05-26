@@ -58,9 +58,19 @@ const Events = () => {
       
       <div className="neu-container">
           <button
-            onClick={() => navigate("/student/dashboard")}
-            className="neu-button small"
-            style={{ marginBottom: "2rem" }}
+            onClick={() => {
+              const user = JSON.parse(localStorage.getItem("user"));
+
+              if (user?.role === "student") {
+                 navigate("/student/dashboard");
+              } else if (user?.role === "admin") {
+                 navigate("/admin/dashboard");
+              } else {
+                 navigate("/");
+             }
+           }}
+           className="neu-button small"
+           style={{ marginBottom: "2rem" }}
           >
             ← Back
           </button>
