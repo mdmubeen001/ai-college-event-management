@@ -30,8 +30,7 @@ exports.createCashfreeOrder = async (req, res) => {
         customer_phone: userPhone,
       },
       order_meta: {
-        return_url: "http://localhost:3000/payment-success?order_id={order_id}",
-      },
+        return_url: "https://ai-college-events.netlify.app/payment-success?order_id={order_id}"      },
     };
 
     console.log("CLIENT ID:", process.env.CASHFREE_CLIENT_ID);
