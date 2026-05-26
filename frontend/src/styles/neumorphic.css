@@ -274,6 +274,8 @@
   box-shadow: 2px 0 10px rgba(0,0,0,0.05);
   transition: all 0.3s ease;
   z-index: 100;
+  box-sizing: border-box;
+  overflow-y: auto;
 }
 
 .neu-sidebar.collapsed { width: 80px; }
@@ -415,7 +417,10 @@
 @media (max-width: 900px) {
   .neu-sidebar {
     position: fixed;
-    height: 100%;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    height: 100dvh;
     transform: translateX(-100%);
   }
   .neu-sidebar.open {
@@ -429,5 +434,116 @@
   }
   .neu-mobile-overlay {
     display: block;
+  }
+}
+
+/* =========================
+   MOBILE RESPONSIVE FIX
+========================= */
+
+@media (max-width: 768px) {
+
+  /* container spacing */
+  .neu-container {
+    padding: 1rem !important;
+  }
+
+  /* cards */
+  .neu-card {
+    padding: 1rem !important;
+    overflow: hidden;
+  }
+
+  /* Event Details image */
+  .neu-card img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    display: block;
+    object-fit: cover;
+  }
+
+  /* buttons stack nicely */
+  .neu-button {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .neu-button.small {
+    width: auto;
+  }
+
+  /* header buttons */
+  .event-top-actions {
+    flex-direction: row;
+    gap: 0.75rem;
+  }
+
+  /* grids */
+  .neu-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1rem !important;
+  }
+
+  /* info box inside EventDetails */
+  .neu-grid > div {
+    min-width: 0;
+  }
+
+  /* analytics chart cards */
+  .recharts-responsive-container {
+    min-width: 0 !important;
+  }
+
+  /* chart titles */
+  h3 {
+    font-size: 1.05rem;
+  }
+
+  /* large headings */
+  h1 {
+    font-size: 2rem !important;
+    word-break: break-word;
+  }
+
+  /* long text */
+  p {
+    word-break: break-word;
+  }
+
+  /* badges wrap */
+  .neu-badge {
+    white-space: normal;
+  }
+
+  /* pie chart labels */
+  .recharts-text {
+    font-size: 11px !important;
+  }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+
+  .neu-card {
+    border-radius: 14px;
+  }
+
+  h1 {
+    font-size: 1.7rem !important;
+    line-height: 1.25;
+  }
+
+  .neu-header {
+    padding: 0.7rem;
+  }
+
+  .neu-button {
+    padding: 0.85rem 1rem;
+    font-size: 0.95rem;
+  }
+
+  .recharts-wrapper {
+    font-size: 10px !important;
   }
 }

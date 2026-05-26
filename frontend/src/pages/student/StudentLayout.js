@@ -70,7 +70,7 @@ const StudentLayout = () => {
       {/* Sidebar */}
       <aside className={`neu-sidebar ${mobileOpen ? 'open' : ''} ${isCollapsed ? 'collapsed' : ''}`}>
         {/* Sidebar Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem', flexShrink: 0 }}>
           <button className="neu-button circle small primary" style={{ width: '40px', height: '40px' }} onClick={toggleSidebar}>CE</button>
           <div className="neu-sidebar-title" style={{ fontWeight: 'bold', fontSize: '1.2rem', whiteSpace: 'nowrap' }}>Campus Events</div>
         </div>
@@ -109,7 +109,7 @@ const StudentLayout = () => {
         </nav>
 
         {/* Logout Button */}
-        <div style={{ marginTop: 'auto' }}>
+        <div style={{ marginTop: 'auto', flexShrink: 0, paddingTop: '1rem' }}>
           <button 
             onClick={handleLogout}
             className="neu-nav-item"
@@ -127,29 +127,43 @@ const StudentLayout = () => {
       {/* Main Content */}
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         {/* Header */}
-        <header className="neu-header">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <header className="neu-header" style={{ padding: '0.75rem 1rem', gap: '1rem', minHeight: '70px', height: 'auto', flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: '1 1 auto', minWidth: 0 }}>
             <button 
               className="neu-button circle small neu-mobile-toggle"
               onClick={toggleSidebar}
             >
               <FiMenu size={24} />
             </button>
-            <h1 style={{ margin: 0, fontSize: '1.5rem' }}>
+            <h1 style={{ 
+              margin: 0, 
+              fontSize: 'clamp(1.1rem, 4vw, 1.5rem)',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
+            }}>
               {getCurrentPageTitle()}
             </h1>
           </div>
           {user && (
-            <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
-              <span style={{ color: 'var(--neu-text-secondary)' }}>Welcome, {user.name?.split(' ')[0]}!</span>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0, marginLeft: 'auto' }}>
+              <span style={{ 
+                color: 'var(--neu-text-secondary)',
+                fontSize: '0.9rem',
+                display: 'inline-block',
+                maxWidth: '120px',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
+              }}>Welcome, {user.name?.split(' ')[0]}!</span>
               <ThemeToggle />
             </div>
           )}
         </header>
 
         {/* Content Area */}
-        <div style={{ padding: '2rem' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ padding: 'clamp(1rem, 4vw, 2rem)', width: '100%', boxSizing: 'border-box', overflowX: 'hidden' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
             <Outlet />
           </div>
         </div>

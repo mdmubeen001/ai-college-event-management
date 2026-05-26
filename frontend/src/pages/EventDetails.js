@@ -217,16 +217,15 @@ const EventDetails = () => {
     );
 
   return (
-    <div className="neu-app">
+    <div className="neu-app" style={{ flexDirection: 'column', width: '100%', overflowX: 'hidden' }}>
       <header className="neu-header">
         <div className="neu-header-logo">CampusEvents</div>
       </header>
-      
       <div className="neu-container">
           {/* Header with back and share */}
           <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: "1.5rem" }}>
             <button
-              onClick={() => navigate("/events",{ replace: true })}
+              onClick={() => navigate("/events", { replace: true })}
               className="neu-button small"
             >
               ← Back
@@ -240,7 +239,16 @@ const EventDetails = () => {
           </div>
 
           {/* Main content card */}
-          <div className="neu-card" style={{ marginBottom: "3rem" }}>
+          <div
+          className="neu-card"
+          style={{
+            marginBottom: "3rem",
+            width: "100%",
+            padding: "1rem",
+            boxSizing: "border-box",
+            overflow: "hidden",
+          }}
+         >
             {/* Hero Image */}
             {event.image && (
               <div style={{ marginBottom: "2rem" }}>
@@ -251,8 +259,16 @@ const EventDetails = () => {
                       : `https://ai-college-backend-ja0y.onrender.com${event.image}`
                   }
                   alt={event.title}
-                  style={{ borderRadius: "var(--neu-radius-sm)", width: '100%', maxHeight: '400px', objectFit: 'cover' }}
-                />
+               style={{
+               borderRadius: "var(--neu-radius-sm)",
+               width: "100%",
+               maxWidth: "100%",
+               height: "auto",
+               maxHeight: "400px",
+               objectFit: "cover",
+               display: "block",
+              }}                
+              />
               </div>
             )}
 
@@ -270,7 +286,7 @@ const EventDetails = () => {
             </div>
 
             {/* Description */}
-            <p style={{ fontSize: "1.1rem", marginBottom: "2rem", lineHeight: "1.8", color: 'var(--neu-text-secondary)' }}>
+            <p style={{ fontSize: "1.1rem", marginBottom: "2rem", lineHeight: "1.6", color: 'var(--neu-text-secondary)' }}>
               {event.description}
             </p>
 
@@ -278,12 +294,8 @@ const EventDetails = () => {
             <div
               className="neu-grid"
               style={{
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-                gap: '1rem',
-                marginBottom: "2rem",
-                padding: '1.5rem',
-                borderRadius: 'var(--neu-radius-sm)',
-                boxShadow: 'var(--neu-shadow-inner)'
+                gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+                gap: "1rem",
               }}
             >
               <div>
@@ -298,13 +310,13 @@ const EventDetails = () => {
                 <p style={{ fontSize: "0.9rem", marginBottom: "0.5rem", color: 'var(--neu-text-secondary)' }}>
                   📍 Location
                 </p>
-                <p style={{ fontWeight: 600 }}>{event.location}</p>
+                <p style={{ fontWeight: 600, wordBreak: 'break-word' }}>{event.location}</p>
               </div>
               <div>
                 <p style={{ fontSize: "0.9rem", marginBottom: "0.5rem", color: 'var(--neu-text-secondary)' }}>
                   👤 Organizer
                 </p>
-                <p style={{ fontWeight: 600 }}>
+                <p style={{ fontWeight: 600, wordBreak: 'break-word' }}>
                   {event.createdBy?.name || "College Admin"}
                 </p>
               </div>
@@ -317,6 +329,7 @@ const EventDetails = () => {
                 </p>
               </div>
             </div>
+          </div>
 
             {/* Registration Actions - Student View */}
             {isStudent && (
@@ -340,7 +353,7 @@ const EventDetails = () => {
                     ⏳ Payment Pending Approval
                   </div>
                 ) : (
-                  <>
+                  <div style={{ display: 'grid', gap: '1rem' }}>
                     <button
                       onClick={payWithCashfree}
                       className="neu-button large primary"
@@ -357,7 +370,7 @@ const EventDetails = () => {
                     >
                       {offlineLoading ? "Requesting..." : "💵 Pay Offline (Cash)"}
                     </button>
-                  </>
+                  </div>
                 )}
 
                 {/* Download Ticket */}
@@ -375,7 +388,7 @@ const EventDetails = () => {
 
             {/* Admin View - Registered Students */}
             {isAdmin && (
-              <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "2rem" }}>
+              <div style={{ borderTop: "1px solid rgba(255,255,255,0.05)", paddingTop: "2rem", marginBottom: '2rem' }}>
                 <h3 style={{ marginBottom: "1.5rem" }}>
                   🎓 Registered Students ({students.length})
                 </h3>
@@ -415,46 +428,51 @@ const EventDetails = () => {
                 )}
               </div>
             )}
-          </div>
 
-      {/* Related Events Section */}
-      {relatedEvents.length > 0 && (
-        <div style={{ marginTop: '3rem' }}>
-            <h2 style={{ marginBottom: "2rem" }}>You Might Also Like</h2>
-            <div className="neu-grid">
-              {relatedEvents.map((relEvent) => (
-                <div
-                  key={relEvent._id}
-                  className="neu-card"
-                  onClick={() => {
-                    navigate(`/events/${relEvent._id}`);
-                    window.scrollTo(0, 0);
-                  }}
-                  style={{ cursor: "pointer", marginBottom: 0, padding: '1.5rem' }}
-                >
-                  {relEvent.image && (
-                    <div style={{ marginBottom: "1rem" }}>
-                      <img
-                        src={
-                          relEvent.image.startsWith("http")
-                            ? relEvent.image
-                            : `https://ai-college-backend-ja0y.onrender.com${relEvent.image}`
-                        }
-                        alt={relEvent.title}
-                        style={{ borderRadius: "var(--neu-radius-sm)", width: '100%', height: '150px', objectFit: 'cover' }}
-                      />
+          {/* Related Events Section - Moved inside neu-container for proper padding and responsiveness */}
+          {relatedEvents.length > 0 && (
+            <div style={{ marginTop: '3rem', paddingBottom: '2rem' }}>
+                <h2 style={{ marginBottom: "2rem" }}>You Might Also Like</h2>
+                <div className="neu-grid">
+                  {relatedEvents.map((relEvent) => (
+                    <div
+                      key={relEvent._id}
+                      className="neu-card"
+                      onClick={() => {
+                        navigate(`/events/${relEvent._id}`);
+                        window.scrollTo(0, 0);
+                      }}
+                      style={{ cursor: "pointer", marginBottom: 0, padding: '1.5rem' }}
+                    >
+                      {relEvent.image && (
+                        <div style={{ marginBottom: "1rem" }}>
+                          <img
+                            src={
+                              relEvent.image.startsWith("http")
+                                ? relEvent.image
+                                : `https://ai-college-backend-ja0y.onrender.com${relEvent.image}`
+                            }
+                            alt={relEvent.title}
+                          style={{
+                            borderRadius: "var(--neu-radius-sm)",
+                            width: "100%",
+                            height: "150px",
+                            objectFit: "cover",
+                            display: "block",
+                          }}             
+             />
+                        </div>
+                      )}
+                      <h4 style={{ marginBottom: "0.5rem", marginTop: 0 }}>{relEvent.title}</h4>
+                      <p style={{ margin: 0, color: 'var(--neu-text-secondary)' }}>
+                        📅 {new Date(relEvent.date).toLocaleDateString()}
+                      </p>
                     </div>
-                  )}
-                  <h4 style={{ marginBottom: "0.5rem", marginTop: 0 }}>{relEvent.title}</h4>
-                  <p style={{ margin: 0, color: 'var(--neu-text-secondary)' }}>
-                    📅 {new Date(relEvent.date).toLocaleDateString()}
-                  </p>
+                  ))}
                 </div>
-              ))}
             </div>
-        </div>
-      )}
-    </div>
+          )}
+      </div> 
     </div>
   );
 };

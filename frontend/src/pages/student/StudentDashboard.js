@@ -198,10 +198,10 @@ const StudentDashboard = () => {
                 className="neu-card"
                 style={{
                   position: 'absolute',
-                  right: 0,
+                  right: '-30px', // Adjusted to align with the right edge of the header's padding on mobile
                   top: 'calc(100% + 10px)',
-                  width: 'min(360px, calc(100vw - 40px))',
-                  zIndex: 50,
+                  width: 'min(250px, 80vw)',
+                  zIndex: 100,
                   padding: '1rem',
                 }}
               >
@@ -210,7 +210,7 @@ const StudentDashboard = () => {
                   <button className="neu-button small" onClick={() => setNotifOpen(false)}>Close</button>
                 </div> 
                 {notifications.length > 0 ? (
-                  <div style={{ display: 'grid', gap: '0.75rem' }}>
+                  <div style={{ display: 'grid', gap: '0.75rem', maxHeight: '300px', overflowY: 'auto' }}> {/* Added maxHeight and overflowY for internal scrolling */}
                     {notifications.map((n) => (
                       <div key={n.id} style={{ padding: '0.75rem', borderRadius: 'var(--neu-radius-sm)', background: 'var(--neu-bg)', boxShadow: 'var(--neu-shadow-inner)' }}>
                         <div style={{ fontWeight: 600, marginBottom: '0.25rem' }}>{n.title}</div> 

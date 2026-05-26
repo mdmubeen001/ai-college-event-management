@@ -68,7 +68,7 @@ const AdminLayout = () => {
       {/* Sidebar */}
       <aside className={`neu-sidebar ${mobileOpen ? 'open' : ''} ${isCollapsed ? 'collapsed' : ''}`}>
         {/* Sidebar Header */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem', flexShrink: 0 }}>
           <button className="neu-button circle small primary" style={{ width: '40px', height: '40px' }} onClick={toggleSidebar}>AD</button>
           <div className="neu-sidebar-title" style={{ fontWeight: 'bold', fontSize: '1.2rem', whiteSpace: 'nowrap' }}>Admin Panel</div>
         </div>
@@ -107,7 +107,7 @@ const AdminLayout = () => {
         </nav>
 
         {/* Logout Button */}
-        <div style={{ marginTop: 'auto' }}>
+        <div style={{ marginTop: 'auto', flexShrink: 0, paddingTop: '1rem' }}>
           <button 
             onClick={handleLogout}
             className="neu-nav-item"
@@ -125,19 +125,37 @@ const AdminLayout = () => {
       {/* Main Content */}
       <main style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
         {/* Header */}
-        <header className="neu-header">
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+        <header className="neu-header" style={{ 
+          padding: '0.75rem 1rem', 
+          gap: '1rem', 
+          flexWrap: 'wrap',
+          height: 'auto',
+          minHeight: '70px'
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: '1 1 auto', minWidth: 0 }}>
             <button 
               className="neu-button circle small neu-mobile-toggle"
               onClick={toggleSidebar}
             >
               <FiMenu size={24} />
             </button>
-            <h1 style={{ margin: 0, fontSize: '1.5rem' }}>
+            <h1 style={{ 
+              margin: 0, 
+              fontSize: 'clamp(1.1rem, 4vw, 1.5rem)',
+              whiteSpace: 'nowrap',
+              overflow: 'hidden',
+              textOverflow: 'ellipsis'
+            }}>
               {getCurrentPageTitle()}
             </h1>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+          <div style={{ 
+            display: 'flex', 
+            alignItems: 'center', 
+            gap: '0.75rem', 
+            flex: '0 0 auto',
+            marginLeft: 'auto'
+          }}>
             {location.pathname === "/admin/manage-events" && (
               <input
                 type="text"
@@ -145,7 +163,7 @@ const AdminLayout = () => {
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="neu-input"
-                style={{ padding: '8px 16px', width: '250px' }}
+                style={{ padding: '8px 16px', width: 'clamp(120px, 25vw, 250px)' }}
               />
             )}
             <ThemeToggle />
@@ -164,8 +182,8 @@ const AdminLayout = () => {
         </header>
 
         {/* Content Area */}
-        <div style={{ padding: '2rem' }}>
-          <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ padding: 'clamp(1rem, 4vw, 2rem)', width: '100%', boxSizing: 'border-box', overflowX: 'hidden' }}>
+          <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
             <Outlet context={{ searchTerm }} />
           </div>
         </div>
