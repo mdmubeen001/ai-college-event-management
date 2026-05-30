@@ -1,35 +1,120 @@
 # AI College Event Management System 🎓
 
-A full-stack MERN application for managing college events with AI-powered feedback analysis.
+An AI-powered full-stack MERN platform for managing college events with authentication, payment system, ticket generation, QR verification and analytics dashboard.
 
-## 🚀 Features
+## 🌐 Live Demo
 
-- Student event registration
-- Admin dashboard
-- Event management system
-- AI-based feedback sentiment analysis
-- Authentication and authorization
-- Responsive user interface
-- File uploads
-- MongoDB database integration
+🔗 https://ai-college-events.netlify.app/
+
+---
+
+## ✨ Features
+
+## 👨‍🎓 Student Features
+
+* Secure Registration & Login
+* Browse and Search Events
+* Event Registration System
+* Online & Offline Payment Methods
+* Download Event Ticket (PDF)
+* QR Code Ticket Verification
+* Registered Events Dashboard
+* Notification System
+* Event Recommendation System
+* Mobile Responsive UI
+* Dark / Light Neumorphic Theme
+
+---
+
+## 👨‍💼 Admin Features
+
+* Admin Authentication
+* Create / Edit / Delete Events
+* Cloudinary Image Uploads
+* Registration Management
+* Payment Status Management
+* Event Analytics Dashboard
+* Category Insights
+* Responsive Admin Panel
+
+---
+
+## 🤖 AI Features
+
+* AI Generated Event Descriptions
+* AI Feedback Analysis
+* Smart Event Recommendations
+* Groq API Integration
 
 ---
 
 ## 🛠️ Tech Stack
 
 ### Frontend
-- React.js
-- CSS
-- Axios
+
+* React.js
+* React Router
+* Axios
+* CSS / Neumorphic UI
+* Responsive Design
 
 ### Backend
-- Node.js
-- Express.js
-- MongoDB
-- Mongoose
+
+* Node.js
+* Express.js
+* MongoDB Atlas
+* Mongoose
+* JWT Authentication
+
+### Cloud & Services
+
+* Netlify (Frontend Deployment)
+* Render (Backend Deployment)
+* MongoDB Atlas (Database)
+* Cloudinary (Image Storage)
+* Cashfree (Payment Gateway)
 
 ### AI Integration
-- Sentiment Analysis API
+
+* Groq API
+* Feedback Analysis
+* AI Description Generator
+
+---
+
+## 📸 Project Screenshots
+
+### Homepage
+
+(Add Desktop Screenshot)
+
+### Events Listing
+
+(Add Desktop Screenshot)
+
+### Event Details Page
+
+(Add Desktop Screenshot)
+
+### Student Dashboard
+
+(Add Desktop Screenshot)
+
+### Admin Dashboard
+
+(Add Desktop Screenshot)
+
+### Analytics Page
+
+(Add Desktop Screenshot)
+
+### Create Event Page
+
+(Add Desktop Screenshot)
+
+### Mobile Responsive View
+
+(Add Phone Screenshot)
 
 ---
 
@@ -40,21 +125,20 @@ ai-college-event-management/
 │
 ├── frontend/
 ├── backend/
-├── .gitignore
-└── README.md
+├── public/
+├── README.md
+└── package.json
 ```
 
 ---
 
-## ⚙️ Installation
+## ⚙️ Installation & Setup
 
 ### Clone Repository
 
 ```bash
 git clone https://github.com/mdmubeen001/ai-college-event-management.git
 ```
-
----
 
 ### Frontend Setup
 
@@ -64,46 +148,64 @@ npm install
 npm start
 ```
 
----
-
 ### Backend Setup
 
 ```bash
 cd backend
 npm install
 npm start
-or npx nodemon server.js
+```
+
+or
+
+```bash
+npx nodemon server.js
 ```
 
 ---
 
-## 🌐 Environment Variables
+## 🔐 Environment Variables
 
-Create a `.env` file inside backend folder and add:
+Create `.env` inside backend folder:
 
 ```env
 MONGO_URI=your_mongodb_connection
 PORT=5000
+JWT_SECRET=your_secret_key
+
+CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
+
+CASHFREE_APP_ID=your_cashfree_app_id
+CASHFREE_SECRET_KEY=your_cashfree_secret
+
+GROQ_API_KEY=your_groq_api_key
 ```
 
 ---
 
-## 📸 Screenshots
+## 🚀 Future Improvements
 
-Add project screenshots here later.
+* Email Notifications
+* Attendance Tracking
+* Admin Approval Workflow
+* Advanced AI Insights
+* Calendar Integration
+* Multi College Support
 
 ---
 
 ## 👨‍💻 Author
 
-Mohammed Mubeen
+**Mohammed Mubeen**
+
+GitHub:
+https://github.com/mdmubeen001
 
 ---
 
-## ⭐ Future Improvements
+## ⭐ Support
 
-- Email notifications
-- QR code event entry
-- Certificate generation
-- Advanced AI analytics
-- Payment integration
+If you liked this project, consider giving it a ⭐ on GitHub.
+
