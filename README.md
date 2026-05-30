@@ -102,53 +102,48 @@ Built to simplify event organization for colleges while improving student engage
 # 📸 Project Screenshots
 
 ## 🏠 Homepage
-
-<img width="100%" src="YOUR_HOMEPAGE_IMAGE_LINK"/>
+<img width="100%" src="./screenshots/homepage.png"/>
 
 ---
 
 ## 🎫 Events Listing
-
-<img width="100%" src="YOUR_EVENTS_IMAGE_LINK"/>
+<img width="100%" src="./screenshots/events.png"/>
 
 ---
 
 ## 📄 Event Details Page
-
-<img width="100%" src="YOUR_DETAILS_IMAGE_LINK"/>
+<img width="100%" src="./screenshots/event-details.png"/>
 
 ---
 
 ## 👨‍🎓 Student Dashboard
-
-<img width="100%" src="YOUR_STUDENT_DASHBOARD_LINK"/>
+<img width="100%" src="./screenshots/student-dashboard.png"/>
 
 ---
 
 ## 👨‍💼 Admin Dashboard
-
-<img width="100%" src="YOUR_ADMIN_DASHBOARD_LINK"/>
+<img width="100%" src="./screenshots/admin-dashboard.png"/>
 
 ---
 
 ## 📊 Analytics Dashboard
-
-<img width="100%" src="YOUR_ANALYTICS_LINK"/>
+<img width="100%" src="./screenshots/analytics.png"/>
 
 ---
 
 ## ➕ Create Event Page
-
-<img width="100%" src="YOUR_CREATE_EVENT_LINK"/>
+<img width="100%" src="./screenshots/create-event.png"/>
 
 ---
 
 ## 📱 Mobile Responsive UI
 
-<img width="45%" src="YOUR_MOBILE_HOME_LINK"/>
-<img width="45%" src="YOUR_MOBILE_DASHBOARD_LINK"/>
+<p align="center">
+  <img width="30%" src="./screenshots/mobile-home.jpg"/>
+  <img width="30%" src="./screenshots/mobile-dashboard.jpg"/>
+  <img width="30%" src="./screenshots/mobile-events.jpg"/>
+</p>
 
----
 
 # 📂 Project Structure
 
