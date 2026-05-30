@@ -139,9 +139,9 @@ Built to simplify event organization for colleges while improving student engage
 ## 📱 Mobile Responsive UI
 
 <p align="center">
-  <img width="30%" src="./screenshots/mobile-home[1].jpg"/>
-  <img width="30%" src="./screenshots/mobile-dashboard[1].jpg"/>
-  <img width="30%" src="./screenshots/mobile-events[1].jpg"/>
+  <img width="30%" src="./screenshots/mobile-home.jpg"/>
+  <img width="30%" src="./screenshots/mobile-dashboard.jpg"/>
+  <img width="30%" src="./screenshots/mobile-events.jpg"/>
 </p>
 
 
